@@ -1,4 +1,4 @@
- #include<stdio.h>
+#include<stdio.h>
 #include<limits.h>
 
 int main() {
@@ -18,16 +18,16 @@ int main() {
   printf("4. char: %d %c\n", c, c);
   c = 0x58;         /* Hexidecimal literal */
   printf("5. char: %d %c\n", c, c);
-  c = 65;         /* Hexidecimal literal */
+  c = 65;   
   printf("6. char: %d %o %x %c\n", c, c, c, c);
 
   /* int */
   printf ("\n\nIntegers\n");
-  printf("1. char: i: %d   u: %u\n", i, ui);
+  printf("1. integer: i: %d   ui: %u\n", i, ui);
   i = -10;
   ui = -10;
-  printf("2. char: i: %d   u: %u\n", i, ui);
-  printf("X. char: i: %u   u: %d\n", i, ui);  /* Careful! */
+  printf("2. integer: i: %d   ui: %u\n", i, ui);
+  printf("X. integer: i: %u   ui: %d\n", i, ui);  /* Careful! */
 
 
   printf("\nData types:\n");
