@@ -4,6 +4,7 @@
 int myNum = 0;
 
 void init(void) {
+  myNum = 0;
   printf("initializing, myNum = %d\n", myNum);
 }
 
@@ -32,6 +33,8 @@ int main() {
    printf ("myNum = %d, a=%d\n", myNum, a);
    init();
    addone(a);
+   printf("addone(a) = %d\n", addone(a)); 
+   printf("addone(20) = %d\n", addone(20)); 
    printf ("myNum = %d, a=%d\n", myNum, a);
    doubleIt(&a);
    printf ("myNum = %d, a=%d\n", myNum, a);

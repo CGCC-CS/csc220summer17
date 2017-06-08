@@ -1,9 +1,12 @@
 #ifndef MYFUNCTIONS_H
 #define MYFUNCTIONS_H
+
+/* symbolic constants */
 #define MULTIPLE 7
 #define SIZE 10
 
-#define MAX(A,B)  (((A) > (B) ? (A) : (B)))
+/* inline function */
+#define MAX(A,B)  (((A) > (B)) ? (A) : (B))
 
 void init(void);
 int addone(int n);
