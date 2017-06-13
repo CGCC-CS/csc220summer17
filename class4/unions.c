@@ -9,8 +9,9 @@ typedef union {
 int main () {
   my_union_t u;
 
-  printf ("sizeof(u) = %d\n", sizeof(u));
+  printf ("sizeof(u)=%d\n", sizeof(u));
   strncpy(u.s, "Hello!", 12);
+  printf ("After assignment: sizeof(u)=%d, strlen(u.s)=%d\n", sizeof(u), strlen(u.s));
   printf ("u.s = %s\n", u.s);
   u.x = 30;
   printf ("u.x = %d\n", u.x);
@@ -20,3 +21,4 @@ int main () {
 
   return 0;
 }
+

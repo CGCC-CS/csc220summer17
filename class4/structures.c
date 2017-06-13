@@ -5,6 +5,9 @@
 #define STRLEN 20       /* default string length */
 
 /* User defined type */
+
+typedef unsigned int number; 
+
 typedef struct mystruct {
   char name[STRLEN];
   int num;
@@ -12,39 +15,49 @@ typedef struct mystruct {
 
 /* forward declarations */
 void print_structure(mystruct_t s);
+void print_struct(const mystruct_t * s);
 void init_structure(mystruct_t *, char *, int); /* no param names required */
 
-int main() {
-    mystruct_t struct1 = {"Alice", 10};         /* initializing declaration */
-    mystruct_t * struct2 = NULL;
+int main () {
+  mystruct_t struct1 = {"Alice", 10};  /* Initializing declaration */
+  mystruct_t * ptr = NULL;
 
-    /* malloc allocates memory from the heap */
-    struct2 = (mystruct_t *) malloc(sizeof(mystruct_t));
+  /* malloc allocates memory from the heap */
+  ptr = malloc(sizeof(mystruct_t));
+  strncpy(ptr->name, "Bob", STRLEN);
+  ptr->num=10;
 
-    /* add values to struct2 */
-    init_structure(struct2, "Bob", 17);
+  /* print both structures */
+  print_structure(struct1);
+  print_structure(*ptr);
 
-    /* print both structures */
-    print_structure(struct1);
-    print_structure(*struct2);
+  /* modify both structures */
+  init_structure(&struct1, "Sue", 30);
+  init_structure(ptr, "Robert", 20);
 
-    /* now change values for struct1 & print */
-    init_structure(&struct1, "Sue", 30);
-    print_structure(struct1);
-    
-    return 0;
+  /* print both structures */
+  printf("\nPrinting both structures after init_structure using print_struct\n");
+  print_struct(&struct1);
+  print_struct(ptr);
+
+  printf("\nPrinting both structures after print_struct using print_structure\n");
+  print_structure(struct1);
+  print_structure(*ptr);
+  return 0;
 }
-
-/* function definitons.  Note how the structure parameter is accessed differently 
- *   depending on whether the parameter is a pointer or not */
-
-/* struct parameter is pass-by-address */
-void init_structure(mystruct_t * s, char * name, int num) {
-   strncpy(s->name, name, STRLEN);
-   s->num = num;
+/* struct is pass-by-address */
+void init_structure(mystruct_t *s, char * name, int num) {
+  strncpy(s->name, name, STRLEN);
+  s->num=num;
 }
 
 /* struct parameter is pass-by-value */
 void print_structure(mystruct_t s) {
-    printf("name: %s, num=%d\n", s.name, s.num);
+  printf("name: %s, num=%d\n", s.name, s.num);
+}
+
+/* Better print_structure */
+void print_struct(const mystruct_t * s) {
+  printf("name: %s, num=%d\n", s->name, s->num);
+  /* s->num=55; NOT ALLOWED */
 }
