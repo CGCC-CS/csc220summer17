@@ -1,12 +1,12 @@
 #include<stdio.h>
 
-unsigned int easyencrypt(char c);
+unsigned int easydecrypt(char c);
 
 int main() {
   int c;
 
   while ( (c = getc(stdin)) != EOF) {
-    printf("%c", easyencrypt(c));
+    printf("%c", easydecrypt(c));
     c++;
   }
 
@@ -15,7 +15,7 @@ int main() {
 }
 
 
-unsigned int easyencrypt(char c){
-  return c + 1;
+unsigned int easydecrypt(char c){
+  return c - 1;
 }
   
