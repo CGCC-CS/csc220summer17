@@ -10,15 +10,18 @@ class StaffMember {
 
   public:
     // constructor
-    StaffMember(string n, string a, string p) {
-       name = n;
-       address = a;
-       phone = p; 
-    }
+    StaffMember(string n, string a, string p);
     void print ();
 };
 
+// Constructor
 // :: is the Scope Resolution Operator
+StaffMember::StaffMember(string n, string a, string p) {
+   name = n;
+   address = a;
+   phone = p; 
+}
+
 void StaffMember::print() {
   cout << "     Name: " << name << endl;
   cout << "  Address: " << address << endl;
@@ -32,9 +35,9 @@ int main() {
 
   cout << "Employee 1: " << endl;
   emp1.print();
-  cout << "Employee 2: " << endl;
+  cout << endl << "Employee 2: " << endl;
   emp2->print();
-  cout << "Done! " << endl;
+  cout << endl << "Done! " << endl;
 
   return 0;
 }
