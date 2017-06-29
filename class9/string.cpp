@@ -8,11 +8,10 @@ int main() {
   cout << "String 1: " << str1 << endl;
   cout << "String 2: " << str2 << endl << endl;
 
-  str1 = "CSC240 C++ Strings";
+  str1 = "CSC220 C++ Strings";
   cout << "String 1: " << str1 << endl;
   cout << "String 2: " << str2 << endl << endl;
 
-  
   cout << "str2 + str1 + : " << str2  + str1 << endl << endl;
   cout << "\"March 1: \" + str1: " << "March 1: " + str1 << endl << endl;
 

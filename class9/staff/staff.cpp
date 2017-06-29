@@ -13,7 +13,7 @@ using namespace std;
 
 void print_paystub(StaffMember * s) {
   s->print();
-  cout << "  Current pay : " << s->pay() << endl;
+  cout << "Current pay : " << s->pay() << endl;
 }
 
 int main() {
