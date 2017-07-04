@@ -5,24 +5,20 @@ using namespace std;
 class myClass {
   public:
     int * a;
-  myClass(int x) {
-    a = new int;
-    *a = x;
+  myClass(int x=0) {
+    a = new int;      // Allocate memory for a
+    *a = x;           // Put value of x in new memory
     cout << "  Constructor: " << *a << "  (" << a << ")" << endl;
   }
-  myClass(const myClass& original) {
-    a = new int;
-    *a = *(original.a);  // Why not a=original.a;
-
-    cout << "  COPY Constructor: " << *a << "  (" << a << ")" << endl;
+  myClass(const myClass & original) {
+    a = new int;         // Allocate new memory for a
+    *a = *(original.a);  // Copy value pointed to by original a
+    cout << "  Copy Constructor: " << *a << "  (" << a << ")" << endl;
   }
   ~myClass() {
     cout << "  Destructor: " << *a << endl;
-    delete (a); 
+    delete (a);       // use delete[](name) to delete arrays 
     a=nullptr;
-  }
-  void print() {
-    cout << "  Printing: " << *a << endl;
   }
 };
 
@@ -32,8 +28,10 @@ void func(myClass *k) {
   cout << " FUNC: entering func" << endl;
   cout << " FUNC: allocating c3" << endl;
   myClass c3(3);
+  myClass * c13 = new myClass(13);
   cout << " FUNC: allocated c3" << endl;
   cout << " FUNC: myClass " << *k->a << endl;
+  delete(c13);  // Must do this or else memory leak!
   cout << " FUNC: exiting " << endl;
   cout << "+++++++++++++++++++++++++++++" << endl;
 }
@@ -45,10 +43,6 @@ void funcy(myClass m) {
   cout << " FUNCY: allocating c4" << endl;
   myClass c4(4);
   cout << " FUNCY: allocated c4" << endl;
-  cout << " FUNCY: printing m " << endl;
-  m.print();
-  cout << " FUNCY: printing c4 " << endl;
-  c4.print();
   cout << " FUNCY: myClass " << *m.a << "  (" << m.a << ")" << endl;
   cout << " FUNCY: exiting " << endl;
   cout << "-----------------------------" << endl;
@@ -75,8 +69,6 @@ int main() {
   funcy(c1);
   cout << "MAIN: returned from funcy(c1)" << endl;
 
-  cout << "MAIN: print c1" << endl;
-  c1.print();
   cout << "MAIN: delete *c2" << endl;
   delete c2;
   cout << "MAIN: end" << endl;
