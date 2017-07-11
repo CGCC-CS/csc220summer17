@@ -10,12 +10,11 @@ class TwoThings {
 
     public:
         TwoThings(T t1, T t2);
-        T getOne() { return thing1; }
-        T getTwo() { return thing2; }
+        T getOne() const { return thing1;}
+        T getTwo() const { return thing2;}
 
-        void setOne(T t1) { thing1 = t1; }
-        void setTwo(T t2) { thing2 = t2; }
-
+        void setOne(T t1) { thing1=t1; }
+        void setTwo(T t2) { thing2=t2; }
 };
 
 template<class T>
@@ -24,8 +23,7 @@ TwoThings<T>::TwoThings(T t1, T t2) {
     thing2 = t2;
 }
 
-
-int main () {
+int main() {
     TwoThings<int> nums(1,5);
     TwoThings<string> strings("CSC","220");
 
@@ -33,9 +31,9 @@ int main () {
     cout << "  " << nums.getOne() << endl;
     cout << "  " << nums.getTwo() << endl;
 
-    cout << endl << "strings:" << endl;
+    cout << endl;
+    cout << "strings:" << endl;
     cout << "  " << strings.getOne() << endl;
     cout << "  " << strings.getTwo() << endl;
-
     return 0;
 }

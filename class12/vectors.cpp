@@ -4,46 +4,53 @@
 using namespace std;
 
 int main() {
-  vector<int> v(10);      // Create vector of size 10
+  vector<int> v(10);     // Create vector of size 10
 
   v = {34, 23, 30, 19};
 
-  // display the size of the vector
+  // Display the size of the vector
   cout << "Vector size: " << v.size() << endl;
   cout << "Vector capacity: " << v.capacity() << endl;
 
   // Print vector with a for loop using array syntax (UNSAFE)
-  for (int ii=0; ii < v.capacity(); ii++) {
-    cout << v[ii] << ", ";
+  for (unsigned int ii=0; ii<v.size(); ii++) {
+    cout << v[ii] << " ";
   }
+  cout << endl << endl;
+
+  cout << "front: " << v.front() << endl;
+  cout << " back: " << v.back() << endl;
   cout << endl;
 
-  cout << " front: " << v.front() << endl;
-  cout << " back: " << v.back() << endl;
 
+  v.push_back(42);
+  v.push_back(37);
+  v.push_back(51);
+  v.push_back(63);
+  v.push_back(17);
+  v.push_back(6);
+  v.push_back(92);
+  v.push_back(77);
 
-  cout << endl << "push_back 42 & 37" << endl;
-  v.push_back(42);  
-  v.push_back(37);  
+  cout << "After push_back:" << endl;  
+  cout << "Vector size: " << v.size() << endl;
+  cout << "Vector capacity: " << v.capacity() << endl;
+
 
   // Print vector using at()
-  //for (int ii=0; ii < v.capacity(); ii++) {
-  for (int ii=0; ii < v.size(); ii++) {
-    cout << v.at(ii) << ", ";
+  for (unsigned int ii=0; ii<v.size(); ii++) {
+    cout << v.at(ii) << " ";
   }
-  cout << endl;
-  cout << " front: " << v.front() << endl;
-  cout << " back: " << v.back() << endl;
+  cout << endl << endl;;
 
-
-  cout << endl; 
+  v[5] = 99;
   v.pop_back();
-  cout << "After pop: " << endl;
+  cout << "After v[5]=99 & pop_back:" << endl;  
   // Print vector using for-each
   for (auto& ii : v) {
-    cout << ii << ", ";
+    cout << ii << " ";
   }
-  cout << endl; 
- 
+  cout << endl;
+
   return 0;
 }

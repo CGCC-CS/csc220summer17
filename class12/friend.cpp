@@ -2,26 +2,25 @@
 #include<string>
 
 using namespace std;
-class WordList;
 
-class Node {
+class WordNode {
     private:
         string word;
-        Node * next;
+        WordNode * next;
     public:
-        Node(string s) {
+        WordNode(string s) {
             word = s;
             next = nullptr;
-        }
+	}
     friend class WordList;
-    friend ostream& operator<< (ostream& strm, const WordList& m);
+    friend ostream& operator<< (ostream& strm, const class WordList& m);
 };
 
 class WordList {
     private:
         int size;
-        Node * first;
-        Node * last;
+        WordNode * first;
+        WordNode * last;
 
     public:
         WordList() {
@@ -32,16 +31,15 @@ class WordList {
 
         void addToFront(string s);
         void addToRear(string s);
-        void print();
         bool isEmpty() { return (size == 0);}
 
-    friend ostream& operator<< (ostream& strm, const WordList& m);
+        friend ostream& operator<< (ostream& strm, const WordList& m);
 };
 
 void WordList::addToFront(string s) {
-    Node * newNode = new Node(s);
-    newNode->next = first;
-    first = newNode;
+    WordNode * newWordNode = new WordNode(s);
+    newWordNode->next = first;
+    first = newWordNode;
     size++;
     if (size == 1) {
         last = first;
@@ -49,35 +47,37 @@ void WordList::addToFront(string s) {
 }
 
 void WordList::addToRear(string s) {
-    Node * newNode = new Node(s);
+    WordNode * newWordNode = new WordNode(s);
     if (isEmpty()) {
         addToFront(s);
     }
     else {
-        last->next = newNode;
-        last = newNode;
+        last->next = newWordNode;
+        last = newWordNode;
     }
     size++;
 }
 
-ostream& operator<< (ostream& strm, const WordList& m) {
-    Node * curr = m.first;
-    while (curr != nullptr) {
+ostream& operator<<(ostream& strm, const WordList& m) {
+    WordNode * curr = m.first;
+    while(curr != nullptr) {
         strm << curr->word << " ";
         curr = curr->next;
     }
     return strm;
 }
 
-int main() {
+int main () {
     cout << "Starting test" << endl;
-
     WordList words;
 
     words.addToFront("Hello");
     words.addToRear("world");
     words.addToRear("goodbye!");
     words.addToFront("CSC220");
+
     cout << words << endl;
+
+    cout << "Finished test" << endl;
     return 0;
 }
