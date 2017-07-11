@@ -38,8 +38,8 @@ int main() {
 
 
   // Print vector using at()
-  for (unsigned int ii=0; ii<v.size(); ii++) {
-    cout << v.at(ii) << " ";
+  for (unsigned int jj=0; jj<v.size(); jj++) {
+    cout << v.at(jj) << " ";
   }
   cout << endl << endl;;
 
@@ -47,8 +47,8 @@ int main() {
   v.pop_back();
   cout << "After v[5]=99 & pop_back:" << endl;  
   // Print vector using for-each
-  for (auto& ii : v) {
-    cout << ii << " ";
+  for (auto& kk : v) {
+    cout << kk << " ";
   }
   cout << endl;
 
