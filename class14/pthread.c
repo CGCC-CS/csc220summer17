@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <unistd.h> 
 
-/* gcc pthread.c -lpthread */
+/* gcc pthread.c -ansi -Wall -pedantic -pthread */
 
 #define NUM_THREADS 6
 
@@ -28,24 +28,22 @@ int main() {
   int ii;
   int rc;
 
+  int num[NUM_THREADS];
   pthread_t new_thread[NUM_THREADS];
 
   for (ii=0;ii<NUM_THREADS;ii++) {
-    int num = ii;
-    if (rc = pthread_create(&new_thread[ii], NULL, count_to_ten, &num)) {
-      fprintf(stderr, "ERROR code %d calling pthread_create\n",rc);
-      return 1;
-    }
-    sleep(1);
-  }
-
-  for (ii=0;ii<5;ii++) {
-      fflush(stdout);
-      sleep(1);
+    num[ii] = ii;
   }
 
   for (ii=0;ii<NUM_THREADS;ii++) {
-    if (pthread_join(new_thread[ii], NULL)) {
+    if ((rc = pthread_create(&new_thread[ii], NULL, count_to_ten, &num[ii])) != 0) {
+      fprintf(stderr, "ERROR code %d calling pthread_create\n",rc);
+      return 1;
+    }
+  }
+
+  for (ii=0;ii<NUM_THREADS;ii++) {
+    if (pthread_join(new_thread[ii], NULL) != 0) {
       fprintf(stderr, "Error joining pthread\n");
       return 1;
     }

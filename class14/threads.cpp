@@ -20,11 +20,12 @@ void count_to_ten(int tabs) {
         for(int ii=0;ii<tabs;ii++) {
             std::cout << "\t";
         }
+        std::cout << jj << std::endl;
+
+	// Free the mutex
+        lock.unlock();
         // Wait a second
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-        std::cout << jj << std::endl;
-        // Mutex freed when scope exits
     }
 }
 
